@@ -3,7 +3,18 @@ module de_docker_hub::de_docker_hub {
    use sui::object::{Self, UID};
     use sui::event::{Self, emit};
     use sui::tx_context::TxContext;
-    use 0x7e12d67a52106ddd5f26c6ff4fe740ba5dea7cfc138d5b1d33863ba9098aa6fe::blob_store;
+    // use 0x7e12d67a52106ddd5f26c6ff4fe740ba5dea7cfc138d5b1d33863ba9098aa6fe::blob_store;
+    use blob_store::blob::Blob;
+
+
+    public struct WrappedBlob has key {
+        id: UID,
+        blob: Blob,
+    }
+
+    public fun wrap(blob: Blob, ctx: &mut TxContext): WrappedBlob {
+        WrappedBlob { id: object::new(ctx), blob }
+    }
 
     // Struct to hold Docker Image metadata, including a reference to a blob
     struct DockerImage has key, store {
