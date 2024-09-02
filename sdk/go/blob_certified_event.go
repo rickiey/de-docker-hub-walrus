@@ -8,7 +8,7 @@ import (
 	sui "github.com/MystenLabs/sui-go-sdk/client"
 )
 
-func main() {
+func main1() {
 	// Initialize the SUI client
 	client, err := sui.NewClient("https://fullnode.mainnet.sui.io:443")
 	if err != nil {
