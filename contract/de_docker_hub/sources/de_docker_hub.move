@@ -1,5 +1,5 @@
 /// Module: de_docker_hub
-module de_docker_hub::de_docker_hub {
+module hub::de_docker_hub {
     // use sui::object::{Self, UID};
     use sui::event::{emit};
     // use sui::tx_context::TxContext;
@@ -7,26 +7,16 @@ module de_docker_hub::de_docker_hub {
     use sui::display;
     use sui::package;
     // use 0x7e12d67a52106ddd5f26c6ff4fe740ba5dea7cfc138d5b1d33863ba9098aa6fe::blob_store;
-    // use blob_store::blob::Blob;
-
-
-    // public struct WrappedBlob has key {
-    //     id: UID,
-    //     blob: Blob,
-    // }
-
-    // public fun wrap(blob: Blob, ctx: &mut TxContext): WrappedBlob {
-    //     WrappedBlob { id: object::new(ctx), blob }
-    // }
+    use blob_store::blob::{Blob,blob_id,size};
 
     // Struct to hold Docker Image metadata, including a reference to a blob
     public struct DockerImage has key, store {
         id: UID,
-        name: String,
-        url: String,
-        tag: String,
+        image_tag: String,
+        description: String,
         hash256: String,
-        blob_id: String,
+        image_blob_id: u256,
+        size: u64,
         creator: address,
     }
     public struct DE_DOCKER_HUB has drop {}
@@ -36,20 +26,18 @@ module de_docker_hub::de_docker_hub {
         let sender = tx_context::sender(ctx);
 
         let keys = vector[
-             string::utf8(b"name"),
-             string::utf8(b"url"),
-             string::utf8(b"tag"),
+             string::utf8(b"image_tag"),
+             string::utf8(b"description"),
              string::utf8(b"hash256"),
-             string::utf8(b"blob_id"),
+             string::utf8(b"image_blob_id"),
              string::utf8(b"creator"),
         ];
 
         let values = vector[
-             string::utf8(b"TokenId #{name}"),
-             string::utf8(b"{url}"),
-             string::utf8(b"{tag}"),
+             string::utf8(b"{image_tag}"),
+             string::utf8(b"{description}"),
              string::utf8(b"{hash256}"),
-             string::utf8(b"{blob_id}"),
+             string::utf8(b"{image_blob_id}"),
              string::utf8(b"{creator}"),
         ];
         let publisher = package::claim(otw, ctx);
@@ -62,54 +50,55 @@ module de_docker_hub::de_docker_hub {
     }
 
     // Event struct for image creation
-    public struct ImageCreated has copy, drop, store {
+    public struct ImageCreated has copy, drop {
         // id: ID,
-        name: String,
-        url: String,
-        tag: String,
+        image_tag: String,
+        description: String,
         creator: address,
-        blob_id: String,
-        hash256: String
+        image_blob_id: u256,
+        hash256: String,
+        size:u64,
     }
 
     // Function to initialize a new Docker Image entry
     public entry fun create_image(
-        name: String,
-        url: String,
-        tag: String,
+        image_tag: String,
+        description: String,
         hash256: String,
-        blob_id: String,
+        // image_blob_id: u256,
+        blob: &Blob,
         ctx: &mut TxContext
     ) {
-        // Ensure the blob exists in the blob_store contract
-        // assert!(blob_store::exists(blob_id), 0);
+
         let sender = tx_context::sender(ctx);
 
         let id = object::new(ctx);
+        let bid = blob_id(blob);
+        let size = size(blob);
+
         let image = DockerImage {
             id,
-            name: name,
-            url: url,
-            tag: tag,
+            image_tag: image_tag,
+            description: description,
             hash256: hash256,
-            blob_id,
+            image_blob_id:bid,
             creator: sender,
+            size: size,
         };
 
         // Emit the image creation event
         emit<ImageCreated>(
             ImageCreated {
-                // id.,
-                name,
-                url,
-                tag,
-                creator: tx_context::sender(ctx),
-                blob_id,
+                image_tag,
+                description,
+                image_blob_id: blob_id(blob),
                 hash256,
+                creator: sender,
+                size:size,
             }
         );
         transfer::public_transfer(image, sender)
-
     }
+
 
 }
