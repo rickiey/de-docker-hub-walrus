@@ -10,3 +10,4 @@ contract/de_docker_hub/build
 
 sdk/ts/node_modules
 contract/blob_store
+node_modules
