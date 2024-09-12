@@ -16,7 +16,6 @@ TODO
 > walrus store ./alpine-base:glibc.tar
 
 + testnet
-
     image_tag: String,
         description: String,
         hash256: String,
