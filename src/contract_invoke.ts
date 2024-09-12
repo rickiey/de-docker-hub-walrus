@@ -5,17 +5,28 @@ import { decodeSuiPrivateKey, encodeSuiPrivateKey } from '@mysten/sui/cryptograp
 
 import { bcs } from '@mysten/bcs';
 
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 // use getFullnodeUrl to define Devnet RPC location
 const rpcUrl = getFullnodeUrl('testnet');
 
 // create a client connected to devnet
 const client = new SuiClient({ url: rpcUrl });
 
-const pk =  decodeSuiPrivateKey("suiprivkey1qpfakvrud20un3rxdmpa3rlel8ah3weptfsc42eywnlvxk75kdraxw8u8xe");
-const keypair = Ed25519Keypair.fromSecretKey(pk.secretKey);
-
-
 async function createImage() {
+
+    const suipriv = process.env.SUI_PRIV_KEY;
+    if (suipriv == undefined) {
+        console.log("please configure sui private key");
+        return
+    }
+
+    const pk =  decodeSuiPrivateKey(suipriv);
+    const keypair = Ed25519Keypair.fromSecretKey(pk.secretKey);
+    console.log(keypair.toSuiAddress()); // 输出: http://localhost:3000
+    return
+
     const tx = new Transaction();
     // let objref = Inputs.ObjectRef({ digest, objectId, version })
     tx.moveCall({

@@ -9,8 +9,8 @@ version = "v0.0.1"
 blob_store = { local ="../blob_store" }
 
 [addresses]
-hub = "0x0"
-# blob_store = "0x7e12d67a52106ddd5f26c6ff4fe740ba5dea7cfc138d5b1d33863ba9098aa6fe"
+hub = "0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea"
+blob_store = "0x7e12d67a52106ddd5f26c6ff4fe740ba5dea7cfc138d5b1d33863ba9098aa6fe"
 # sui = "0x2"
 
 [dev-dependencies]

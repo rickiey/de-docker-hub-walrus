@@ -7,6 +7,5 @@ test
 log
 */**.log
 contract/de_docker_hub/build
-
 contract/blob_store
 node_modules

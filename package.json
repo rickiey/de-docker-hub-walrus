@@ -1,5 +1,21 @@
 {
-	"dependencies": {
-		"node-fetch": "^3.3.2"
-	}
+  "name": "de_docker_hub_sdk_ts",
+  "version": "1.0.0",
+  "main": "src/tool.ts",
+  "scripts": {
+    "dev": "ts-node src/tool.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@mysten/bcs": "^1.0.4",
+    "@mysten/sui": "^1.7.0",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^2.7.0",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.3"
+  }
 }
