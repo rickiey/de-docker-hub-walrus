@@ -13,12 +13,15 @@ TODO
 + upload image
 
 > docker save alpine-base:glibc -o alpine-base:glibc.tar
-> walrus store ./alpine-base:glibc.tar
 
-+ testnet
-    image_tag: String,
-        description: String,
-        hash256: String,
-        image_blob_id: u256,
+* update src/upload_to_walrus.ts  filePath
 
-> sui client call --gas-budget 10000000   --package 0x66537cc32afe49bdeb6eb0b96cfe2a1c9014c1a4bc04dde20a1bc5a936be6a6d --module de_docker_hub  --function create_image --args docker.io/yagnrui/base:alpine-glibc "docker image alpine with glibc"  8963899b0f215618b88295917c0914195fcb33ee0f953c96f4f59f6c631cc785  0xe3d875663f05fd35d99fb79af13e92cf55abc720e6bb58b09fdcaae6b246523f
+> ts-node src/upload_to_walrus.ts
+
+* update src/creat_image.ts     update image info
+
+> ts-node src/creat_image.ts
+
+* sui CLI
+
+> sui client call --gas-budget 10000000   --package dd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea --module de_docker_hub  --function create_image --args alpine:glibc "docker image alpine with glibc"  "sha256:8963899b0f215618b88295917c0914195fcb33ee0f953c96f4f59f6c631cc785"  0xe3d875663f05fd35d99fb79af13e92cf55abc720e6bb58b09fdcaae6b246523f
