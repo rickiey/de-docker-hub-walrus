@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple API Search</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>de-docker-hub-walrus</h2>
+
+            <ul id="meta-info">
+            </ul>
+            <ul id="meta">
+                <li>repo: <a href="https://github.com/rickiey/de-docker-hub-walrus">de-docker-hub-walrus</a> </li>
+                <li>
+                    testnet-package:
+                        <a href="https://suiscan.xyz/testnet/object/0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea/txs">
+                            <code>0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea</code></a>
+                </li>
+            </ul>
+
+            <!-- 添加说明文档 -->
+            <div id="doc-section">
+                <h3>TypeScript & CLI Usage</h3>
+                You can use the object ID that uploads to Walrus directly to the SUI blockchain browser to create an image. You can also use the TS script to create
+                <p><strong>TypeScript Setup:</strong> To get started with TypeScript, install the TypeScript compiler globally:</p>
+                <pre><code>npm install -g typescript</code></pre>
+                <p>Then, compile your TypeScript files:</p>
+                <pre><code>tsc yourfile.ts</code></pre>
+                <p><strong>CLI Usage:</strong> To use the command line interface for this project, navigate to the project directory and run:</p>
+                <pre><code>node yourscript.js</code></pre>
+                <p>Ensure you have Node.js installed.</p>
+            </div>
+
+
+        </div>
+        <div class="main">
+            <h2>Search Docker image</h2>
+            <input type="text" id="search-input" placeholder="Enter search docker image">
+            <button id="search-button">Search</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
