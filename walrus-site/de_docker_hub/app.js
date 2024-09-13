@@ -66,6 +66,7 @@ function displayResults(hits) {
         card.classList.add('result-card');
 
         card.innerHTML = `
+            <p><strong>ID txDigest:</strong> ${hit.id_tx_digest}</p>
             <p><strong>Image Tag:</strong> ${hit.image_tag}</p>
             <p><strong>Description:</strong> ${hit.desc}</p>
             <p><strong>Size (bytes):</strong> ${hit.size}</p>
