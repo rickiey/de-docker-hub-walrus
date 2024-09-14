@@ -22,19 +22,38 @@
                 </li>
             </ul>
 
-            <!-- 添加说明文档 -->
+            <!-- add docs -->
             <div id="doc-section">
-                <h3>TypeScript & CLI Usage</h3>
+                <h3>upload docker image</h3>
                 You can use the object ID that uploads to Walrus directly to the SUI blockchain browser to create an image. You can also use the TS script to create
-                <p><strong>TypeScript Setup:</strong> To get started with TypeScript, install the TypeScript compiler globally:</p>
-                <pre><code>npm install -g typescript</code></pre>
-                <p>Then, compile your TypeScript files:</p>
-                <pre><code>tsc yourfile.ts</code></pre>
-                <p><strong>CLI Usage:</strong> To use the command line interface for this project, navigate to the project directory and run:</p>
-                <pre><code>node yourscript.js</code></pre>
-                <p>Ensure you have Node.js installed.</p>
-            </div>
+                <p><strong>export docker images:</strong></p>
+                <pre><code>docker save busybox:latest -o buszybox.tar</code></pre>
+                Remember sha256
+                <pre><code>docker inspect busybox:latest|jq '.[0].Id'</code>
+                    <br><code>"sha256:87ff76f62d367950............b8fef60ae9e"</code></pre>
 
+                <p><strong>upload to walrus:</strong></p>
+                use walrus cli:
+                <pre><code>walrus store ./buszybox.tar</code></pre>
+                <pre><code>Success: Blob stored successfully.</code><br><code>Blob ID: 9IxTmGOS2.......EecFO5w.</code><br><code>Unencoded size: 4.30 MiB.</code><br><code>Encoded size (including metadata): 80.9 MiB.</code><br><code>Sui object ID: 0x80fede4148a......6286ae4.</code><br><code>Cost (excluding gas): 0.0041 SUI </code></pre>
+
+                or use script:
+                replace src/upload_to_walrus.ts file path
+                <pre><code>ts-node src/upload_to_walrus</code></pre>
+
+                <p>Remember sui object id.</p>
+                <h3>create images on contract</h3>
+                use sui explore <a href="https://suiscan.xyz/testnet/object/0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea/contracts">contract</a>
+                <br>
+                or use script:
+                replace src/create_image.ts args
+                <pre><code>ts-node src/create_image</code></pre>
+
+                <h3>search images</h3>
+                Need meilisearch
+                <a href="https://github.com/rickiey/de-docker-hub-walrus">Guides</a>
+
+            </div>
 
         </div>
         <div class="main">

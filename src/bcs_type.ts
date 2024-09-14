@@ -1,5 +1,4 @@
 import { bcs } from '@mysten/bcs';
-import { buffer } from 'stream/consumers';
 
 // Integers
 const u8 = bcs.u8().serialize(100).toBytes();

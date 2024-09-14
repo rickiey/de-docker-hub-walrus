@@ -3,9 +3,15 @@ import fetch from 'node-fetch';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
+const filePath = '<replace your file>';
+
 async function uploadFile(filePath: string) {
+
+  // AGGREGATOR=https://aggregator-devnet.walrus.space
+  // PUBLISHER=https://publisher-devnet.walrus.space
   const publisher = process.env.PUBLISHER ;
   const aggregator = process.env.AGGREGATOR ;
+
   try {
     const fileContent = fs.readFileSync(filePath, 'utf8');
     // push url
@@ -30,9 +36,6 @@ async function uploadFile(filePath: string) {
     console.error(`发生错误: ${error}`);
   }
 }
-
-// const filePath = './pnpm-lock.yaml';
-const filePath = 'node_modules/.modules.yaml';
 
 uploadFile(filePath );
 
@@ -63,6 +66,6 @@ uploadFile(filePath );
     },
     endEpoch: 1
   }
-}   
+}
 
 */

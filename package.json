@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/tool.ts",
   "scripts": {
-    "dev": "ts-node src/tool.ts"
+    "import": "ts-node src/handle_event.ts"
   },
   "author": "",
   "license": "ISC",
