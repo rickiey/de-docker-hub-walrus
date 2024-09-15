@@ -14,7 +14,7 @@
             <ul id="meta-info">
             </ul>
             <ul id="meta">
-                <li>repo: <a href="https://github.com/rickiey/de-docker-hub-walrus">de-docker-hub-walrus</a> </li>
+                <li>github repo: <a href="https://github.com/rickiey/de-docker-hub-walrus">de-docker-hub-walrus</a> </li>
                 <li>
                     testnet-package:
                         <a href="https://suiscan.xyz/testnet/object/0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea/txs">
@@ -27,14 +27,14 @@
                 <h3>upload docker image</h3>
                 You can use the object ID that uploads to Walrus directly to the SUI blockchain browser to create an image. You can also use the TS script to create
                 <p><strong>export docker images:</strong></p>
-                <pre><code>docker save busybox:latest -o buszybox.tar</code></pre>
+                <pre><code>docker save busybox:latest -o busybox.tar</code></pre>
                 Remember sha256
                 <pre><code>docker inspect busybox:latest|jq '.[0].Id'</code>
                     <br><code>"sha256:87ff76f62d367950............b8fef60ae9e"</code></pre>
 
                 <p><strong>upload to walrus:</strong></p>
                 use walrus cli:
-                <pre><code>walrus store ./buszybox.tar</code></pre>
+                <pre><code>walrus store ./busybox.tar</code></pre>
                 <pre><code>Success: Blob stored successfully.</code><br><code>Blob ID: 9IxTmGOS2.......EecFO5w.</code><br><code>Unencoded size: 4.30 MiB.</code><br><code>Encoded size (including metadata): 80.9 MiB.</code><br><code>Sui object ID: 0x80fede4148a......6286ae4.</code><br><code>Cost (excluding gas): 0.0041 SUI </code></pre>
 
                 or use script:
@@ -52,7 +52,18 @@
                 <h3>search images</h3>
                 Need meilisearch
                 <a href="https://github.com/rickiey/de-docker-hub-walrus">Guides</a>
-
+                run meilisearch in localhost (docker)
+                <pre>
+                    <code>docker run -it --rm \</code>
+                    <code>  -p 7700:7700 \</code>
+                    <code>  -e MEILI_MASTER_KEY='ztRNp4FS8YaoMsmRwzGy28Y97o9Ry10aJqk-NAvSpE0'\</code>
+                    <code>  -e MEILI_ENV='development' \</code>
+                    <code>  -v $(pwd)/meili_data:/meili_data \</code>
+                    <code>  getmeili/meilisearch:v1.10</code>
+                </pre>
+                import the image indexes from sui event
+                <pre><code>ts-node src/handle_event.ts</code></pre>
+                <h3>You can search at <a href="https://wuea98mxtzewdatthsgqpxtf7z2bb0c8pigoof3sx08gkg1s4.walrus.site">walrus site</a></h3>
             </div>
 
         </div>
