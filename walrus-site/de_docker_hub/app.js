@@ -40,7 +40,13 @@ function searchAPI(query) {
     // 替换为真实的 API URL
     const apiUrl = `http://localhost:7700/indexes/images/search?q=${query}`;
 
-    fetch(apiUrl)
+    fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ztRNp4FS8YaoMsmRwzGy28Y97o9Ry10aJqk-NAvSpE0',
+            'Content-Type': 'application/json'
+        }
+    })
         .then(response => response.json())
         .then(data => {
             displayResults(data.hits);
