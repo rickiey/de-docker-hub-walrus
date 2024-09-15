@@ -8,8 +8,6 @@ Build a decenterlized docker hub, store docker images in Walrus
 
 ## Usage
 
-TODO
-
 + upload image
 
 > docker save alpine-base:glibc -o alpine-base:glibc.tar
