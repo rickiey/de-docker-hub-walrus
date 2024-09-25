@@ -39,7 +39,7 @@ function searchAPI(query) {
 
     // 替换为真实的 API URL
     // const apiUrl = `http://localhost:7700/indexes/images/search?q=${query}`;
-    const apiUrl = `http://ec22.longfil.io/hub/search?q=${query}`;
+    const apiUrl = `https://ec22.longfil.io/hub/search?q=${query}`;
 
     fetch(apiUrl, {
         method: 'GET',
