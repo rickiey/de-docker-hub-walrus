@@ -67,6 +67,9 @@ example:
 
 Wait a few minutes
 
+
+## search at [walrus site](https://wuea98mxtzewdatthsgqpxtf7z2bb0c8pigoof3sx08gkg1s4.walrus.site/)
+
 ## search (local meilisearch)
 
 * run meilisearch in localhost (docker)
