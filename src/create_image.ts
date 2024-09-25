@@ -27,11 +27,11 @@ async function createImage() {
     const keypair = Ed25519Keypair.fromSecretKey(pk.secretKey);
     console.log(keypair.toSuiAddress());
 
-    const image_tag = "alpine:glibc"
-    const image_desc = "docker image alpine with glibc"
-    const image_hash256 = "sha256:8963899b0f215618b88295917c0914195fcb33ee0f953c96f4f59f6c631cc785"
+    const image_tag = "ubuntu:2404"
+    const image_desc = "ubuntu:2404"
+    const image_hash256 = "sha256:edbfe74c41f8a3501ce542e137cf28ea04dd03e6df8c9d66519b6ad761c2598a"
     // it's not blob-id
-    const blob_object_uid = "0xe3d875663f05fd35d99fb79af13e92cf55abc720e6bb58b09fdcaae6b246523f"
+    const blob_object_uid = "0x4dd3f2a3d0b192b758f77ca850cf0df36ed2c0192b338bbc15984c7da69ec9b1"
 
     const tx = new Transaction();
     tx.moveCall({

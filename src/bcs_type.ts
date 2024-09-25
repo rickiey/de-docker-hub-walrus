@@ -4,7 +4,7 @@ import { bcs } from '@mysten/bcs';
 const u8 = bcs.u8().serialize(100).toBytes();
 const u64 = bcs.u64().serialize(1000000n).toBytes();
 const u128 = bcs.u128().serialize('100000010000001000000').toBytes();
-const u256 = bcs.u256().serialize('31047962936875863328318480636459205984119665894487819760892210387509083871069').toBytes();
+const u256 = bcs.u256().serialize('68341495783896991496609676331795013357979380897398453867313313283219970966262').toBytes();
 const b64url_u256 = Buffer.from(u256)
 console.log(b64url_u256.toString("base64url"))
 // // Other types

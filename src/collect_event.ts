@@ -9,8 +9,7 @@ const suiClient = new SuiClient({
 
 // 配置 MeiliSearch 客户端
 const client = new MeiliSearch({
-  host: 'http://127.0.0.1:7700', // replace your MeiliSearch host and port
-  apiKey: 'ztRNp4FS8YaoMsmRwzGy28Y97o9Ry10aJqk-NAvSpE0', // repalce your MeiliSearch API key
+  host: 'http://localhost:7700', // replace your MeiliSearch host and port
 });
 
 
