@@ -38,12 +38,12 @@ function searchAPI(query) {
     resultsContainer.innerHTML = 'Searching...';
 
     // 替换为真实的 API URL
-    const apiUrl = `http://localhost:7700/indexes/images/search?q=${query}`;
+    // const apiUrl = `http://localhost:7700/indexes/images/search?q=${query}`;
+    const apiUrl = `http://ec22.longfil.io/hub/search?q=${query}`;
 
     fetch(apiUrl, {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer ztRNp4FS8YaoMsmRwzGy28Y97o9Ry10aJqk-NAvSpE0',
             'Content-Type': 'application/json'
         }
     })
