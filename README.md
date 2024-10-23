@@ -68,7 +68,7 @@ example:
 Wait a few minutes
 
 
-## search at [walrus site](https://wuea98mxtzewdatthsgqpxtf7z2bb0c8pigoof3sx08gkg1s4.walrus.site/)
+## search at [walrus site](https://4ydxz0jpe1fvgbg2hvb3jgki6b7c7m1hgmdv3pmq15x2qapawe.walrus.site/)
 
 ## search (local meilisearch)
 

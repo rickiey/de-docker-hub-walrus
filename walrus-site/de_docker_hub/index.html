@@ -1,44 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple API Search</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="sidebar">
-            <h2>de-docker-hub-walrus</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>De Docker hub</title>
+        <link rel="stylesheet" href="./style.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
 
-            <ul id="meta-info">
-            </ul>
-            <ul id="meta">
-                <br>
-                <li>github repo: <a href="https://github.com/rickiey/de-docker-hub-walrus">de-docker-hub-walrus</a> </li>
-                <br>
-                <li>
-                    testnet-package:
-                        <a href="https://suiscan.xyz/testnet/object/0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea/txs">
-                            <code>0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea</code></a>
-                </li>
-            </ul>
+    <body>
+        <div>
+            <div class="flex flex-row">
+                <!-- sidebar -->
+                <div class="basis-1/3 ps-1 bg-slate-50">
+                    <div class="p-6 mx-auto bg-white flex items-center">
+                        <div class="shrink-0 ps-2">
+                            <img
+                                class="size-16"
+                                src="./assets/docker.svg"
+                                alt="docker Logo"
+                            />
+                        </div>
+                        <div>
+                            <div class="text-4xl text-sky-500 ps-2">
+                                de-docker-hub-walrus
+                            </div>
+                            <p class="text-slate-500 ps-1">
+                                Decentralized docker hub on walrus
+                            </p>
+                        </div>
+                    </div>
 
-            <!-- add docs -->
-            <div id="doc-section">
-                <h3>upload your docker image <a  href="https://github.com/rickiey/de-docker-hub-walrus">Guides</a> </h3>
+                    <div class="p-6 mx-auto flex items-center">
+                        <div class="shrink-0 ps-2">
+                            <img src="./assets/github.svg" class="size-6"">
+                        </div>
+                        <div text-4xl text-sky-500 ps-2>
+                            repo:
+                            <a
+                                class="text-sky-900 underline underline-offset-2"
+                                href=" https://github.com/rickiey/de-docker-hub-walrus"
+                                >de-docker-hub-walrus</a
+                            >
+                        </div>
+                    </div>
+                    <div class="p-6 mx-auto flex items-center">
+                        testnet-package:
+                        <a
+                            class="text-xs ps-1 text-fuchsia-950 underline underline-offset-2"
+                            href="https://suiscan.xyz/testnet/object/0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea/txs"
+                        >
+                            <code
+                                >0xdd6fc2818ec29b9506dcd3e49952b28ce89f44f1ddfc8450680346f22f3e78ea</code
+                            ></a
+                        >
+                    </div>
 
+                    <!-- add docs -->
+                    <!-- <div id="doc-section"> -->
+                    <div class="p-6 mx-auto flex items-center">
+                        <h3>
+                            upload your docker image
+                            <a
+                                class="text-sky-600 underline underline-offset-2"
+                                href="https://github.com/rickiey/de-docker-hub-walrus"
+                                >Guides</a
+                            >
+                        </h3>
+                    </div>
+                </div>
+                <!-- main -->
+                <div class="basis-2/3 ps-8 py-6">
+                    <div
+                        class="rounded-7xl outline-14 relative flex-col min-h-screen flex-col justify-items-center mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"
+                    >
+                        <br />
+                        <br />
+                        <h2
+                            class="justify-self-center text-4xl text-sky-500 ps-2 space-x-4"
+                        >
+                            Search Docker image
+                        </h2>
+                        <br />
+                        <br />
+                        <input
+                            class="rounded-7xl outline-4 border-4"
+                            type="text"
+                            id="search-input"
+                            placeholder="Enter search docker image"
+                        />
+                        <button
+                            id="search-button"
+                            class="rounded-7xl outline-4 border-4"
+                        >
+                            Search
+                        </button>
+
+                        <div id="results"></div>
+                    </div>
+                </div>
             </div>
-
         </div>
-        <div class="main">
-            <h2>Search Docker image</h2>
-            <input type="text" id="search-input" placeholder="Enter search docker image">
-            <button id="search-button">Search</button>
-            <div id="results"></div>
-        </div>
-    </div>
 
-    <script src="./app.js"></script>
-</body>
+        <script src="./app.js"></script>
+    </body>
 </html>
