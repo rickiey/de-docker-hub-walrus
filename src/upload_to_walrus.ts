@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import fetch from 'node-fetch';
 import * as dotenv from 'dotenv';
+import { log } from './logger';
 dotenv.config();
 
 const filePath = '<replace your file>';
@@ -28,12 +29,12 @@ async function uploadFile(filePath: string) {
     if (response.ok) {
 
       let r = await response.json() ;
-      console.log(r);
+      log.info(`文件上传成功: ${JSON.stringify(r)}`);
     } else {
-      console.error(`文件上传失败: ${response.status} - ${response.statusText}`);
+      log.error(`文件上传失败: ${response.status} - ${response.statusText}`);
     }
   } catch (error) {
-    console.error(`发生错误: ${error}`);
+    log.error(`上传文件时发生错误: ${error}`);
   }
 }
 

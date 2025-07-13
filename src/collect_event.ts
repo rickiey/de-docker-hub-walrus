@@ -2,7 +2,7 @@ import { getFullnodeUrl, SuiClient } from '@mysten/sui/client';
 
 import { MeiliSearch } from 'meilisearch';
 import { bcs } from '@mysten/bcs';
-
+import {log} from './logger';
 const suiClient = new SuiClient({
 	url: getFullnodeUrl('testnet'),
 });
@@ -31,7 +31,7 @@ async function listenForSuiEvent(eventName: string) {
   unsubscribe.data.forEach(async event =>  {
     let jres = JSON.stringify(event.parsedJson)
     let evt = JSON.parse(jres)
-    console.log('subscribeEvent',event.id.txDigest, event.timestampMs, evt);
+    log.info(`Event received: ${event.id.txDigest} at ${event.timestampMs} - ${eventName}`, evt);
 
     let u256 = bcs.u256().serialize(evt.image_blob_id).toBytes();
     let b64url_u256 = Buffer.from(u256)
@@ -47,9 +47,10 @@ async function listenForSuiEvent(eventName: string) {
           blob_id:blob_id_b64,
       }]
       let res= await index.addDocuments(document);
-    console.log('Document added to MeiliSearch:', document,res);
+    log.info(`Document added to MeiliSearch: ${JSON.stringify(document)}` );
+    log.info(`MeiliSearch response: ${JSON.stringify(res)}` );
   } catch (e) {
-    console.error('Error adding document to MeiliSearch:', e);
+    log.error(`Error adding document to MeiliSearch: ${e}` );
   }
 
   })

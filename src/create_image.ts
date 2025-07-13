@@ -6,6 +6,7 @@ import { decodeSuiPrivateKey, encodeSuiPrivateKey } from '@mysten/sui/cryptograp
 import { bcs } from '@mysten/bcs';
 
 import * as dotenv from 'dotenv';
+import { log } from './logger';
 dotenv.config();
 
 // use getFullnodeUrl to define Devnet RPC location
@@ -25,7 +26,7 @@ async function createImage() {
 
     const pk =  decodeSuiPrivateKey(suipriv);
     const keypair = Ed25519Keypair.fromSecretKey(pk.secretKey);
-    console.log(keypair.toSuiAddress());
+    log.info(`keypair address: ${keypair.toSuiAddress()}`);
 
     const image_tag = "ubuntu:2404"
     const image_desc = "ubuntu:2404"
@@ -54,7 +55,11 @@ async function createImage() {
         }
     });
 
-    console.log(resp);
+    if (resp.effects?.status.status === 'success') {
+        log.info(`create image success: ${JSON.stringify(resp.effects)}`);
+    } else {
+        log.error(`create image failed: ${JSON.stringify(resp.effects)}`);
+    }
 }
 
  createImage();
