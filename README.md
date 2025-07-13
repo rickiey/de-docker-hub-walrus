@@ -85,14 +85,3 @@ docker run -it --rm \
 * import the image indexes from sui event
 
 `ts-node src/collect_event.ts.ts`
-
-## **Notice**
-
-```txt
- This project is for learning and research purposes only.
- Commercial use without permission is prohibited.
- If you have any questions or suggestions, please contact the author.
-
-```
-
-**Author:** rickiey
